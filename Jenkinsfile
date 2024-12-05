@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('Deploy') {
-      steps {
-        sh 'docker-compose up --build -d --force-recreate'
+      parallel {
+        stage('Deploy') {
+          steps {
+            sh 'sudo docker-compose up --build -d --force-recreate'
+          }
+        }
+
+        stage('Check_container') {
+          steps {
+            sh 'sudo docker ps -a'
+          }
+        }
+
       }
     }
 
