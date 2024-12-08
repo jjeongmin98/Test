@@ -4,10 +4,10 @@ pipeline {
     stage('Checkout') {
       steps {
         git branch: 'main',
-        git url: 'https://github.com/jjeongmin98/Test.git', credentialsId: 'jjeongmin98'
+            url: 'https://github.com/jjeongmin98/Test.git',
+            credentialsId: 'jjeongmin98'
       }
     }
-
     stage('Deploy') {
       parallel {
         stage('Deploy') {
@@ -15,15 +15,12 @@ pipeline {
             sh 'docker-compose up --build -d --force-recreate'
           }
         }
-
         stage('Check_container') {
           steps {
             sh 'docker ps -a'
           }
         }
-
       }
     }
-
   }
 }
