@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        git branch: 'main',
         git url: 'https://github.com/jjeongmin98/Test.git', credentialsId: 'jjeongmin98'
       }
     }
