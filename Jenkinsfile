@@ -12,12 +12,12 @@ pipeline {
       parallel {
         stage('Deploy') {
           steps {
-            sh 'docker-compose up --build -d --force-recreate'
+            sh 'sudo docker-compose up --build -d --force-recreate'
           }
         }
         stage('Check_container') {
           steps {
-            sh 'docker ps -a'
+            sh 'sudo docker ps -a'
           }
         }
       }
