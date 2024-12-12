@@ -11,7 +11,7 @@ pipeline {
             credentialsId: 'jjeongmin98'
       }
     }
-    stage('Deploy') {
+    stage('stop container') {
       parallel {
         stage('Deploy') {
           steps {
