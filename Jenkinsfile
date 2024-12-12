@@ -15,6 +15,13 @@ pipeline {
       parallel {
         stage('Deploy') {
           steps {
+            sh 'docker-compose down'
+          }
+        }
+    stage('Deploy') {
+      parallel {
+        stage('Deploy') {
+          steps {
             sh 'docker-compose up --build -d --force-recreate'
           }
         }
